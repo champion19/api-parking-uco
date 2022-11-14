@@ -1,4 +1,4 @@
-package com.tutorial.crud.security.dto;
+package com.tutorial.crud.security.dto.auth;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
