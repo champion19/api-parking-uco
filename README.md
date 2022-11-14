@@ -18,7 +18,12 @@ Versiónes estables para el proyecto:
 + Tener instalado un gestor de base de datos y configurarlo en
 ``application.properties`` del proyecto
 
++ Elimina las etiquetas de comentario y ejecuta el archivo
+``util/CreateRoles``
+
+
 + Iniciar aplicación en Intellij
 ![img.png](img.png)
-``Sigue los pasos descriptos en la imagen``
++ Sigue los pasos descriptos en la imagen
+
 
