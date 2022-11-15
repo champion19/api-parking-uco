@@ -1,7 +1,7 @@
 package com.tutorial.crud.controller;
 
 import com.tutorial.crud.dto.Mensaje;
-import com.tutorial.crud.dto.ProductoDto;
+import com.tutorial.crud.dto.product.ProductoDto;
 import com.tutorial.crud.entity.Producto;
 import com.tutorial.crud.service.ProductoService;
 import org.apache.commons.lang3.StringUtils;

@@ -1,4 +1,4 @@
-package com.tutorial.crud.dto;
+package com.tutorial.crud.dto.product;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;

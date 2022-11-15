@@ -1,4 +1,4 @@
-package com.tutorial.crud.security.dto;
+package com.tutorial.crud.security.dto.auth;
 
 import org.springframework.security.core.GrantedAuthority;
 
