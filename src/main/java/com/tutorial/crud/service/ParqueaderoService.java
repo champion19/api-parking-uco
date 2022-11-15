@@ -16,20 +16,15 @@ public class ParqueaderoService {
         return parqueaderoRepository.findAll();
     }
 
-    public Parqueadero guardarParqueadero(Parqueadero parqueadero){
+    public Parqueadero save(Parqueadero parqueadero){
         return parqueaderoRepository.save(parqueadero);
     }
 
-    public Parqueadero obtenerPorId(Long id){
-        return parqueaderoRepository.findById(id).orElse(null);
+    public void delete(int id){
+        parqueaderoRepository.deleteById(id);
     }
 
-    public boolean eliminarParqueadero(Long id){
-        try{
-            parqueaderoRepository.deleteById(id);
-            return true;
-        }catch(Exception err){
-            return false;
-        }
+    public boolean existsById(int id){
+        return parqueaderoRepository.existsById(id);
     }
 }
