@@ -42,7 +42,7 @@ public class ClienteController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!clientesService.existsById(id))
-            return new ResponseEntity(new Mensaje("El cliente con "+ id + " no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("El cliente con ID "+ id + " no existe"), HttpStatus.NOT_FOUND);
         clientesService.delete(id);
         return new ResponseEntity(new Mensaje("Cliente eliminado satisfactoriamente"), HttpStatus.OK);
     }
