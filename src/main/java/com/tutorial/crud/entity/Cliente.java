@@ -1,8 +1,9 @@
 package com.tutorial.crud.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tutorial.crud.dto.client.ClientDto;
+
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,16 @@ public class Cliente {
     @JsonIgnoreProperties({"cliente"})
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "cliente")
     private List<Vehiculo> vehiculos;
+
+    public Cliente(ClientDto clientDto) {
+
+    }
+
+    public Cliente(String nombre, String email, String numero) {
+        this.nombre = nombre;
+        this.email = email;
+        this.numero = numero;
+    }
 
     public Long getId() {
         return id;

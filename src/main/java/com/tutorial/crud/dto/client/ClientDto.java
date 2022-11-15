@@ -6,25 +6,26 @@ import javax.validation.constraints.NotEmpty;
 public class ClientDto {
 
     @NotBlank
-    private String nombre;
+    @NotEmpty
+    private static String nombre;
     @NotBlank
     @NotEmpty
-    private String email;
+    private static String email;
 
     @NotBlank
     @NotEmpty
-    private String numeros;
+    private static String numero;
 
     public ClientDto() {
     }
 
-    public ClientDto(@NotBlank String nombre, @NotBlank @NotEmpty String email, @NotBlank @NotEmpty String numeros) {
+    public ClientDto(@NotBlank @NotEmpty String nombre, @NotBlank @NotEmpty String email, @NotBlank @NotEmpty String numero) {
         this.nombre = nombre;
         this.email = email;
-        this.numeros = numeros;
+        this.numero = numero;
     }
 
-    public String getNombre() {
+    public static String getNombre() {
         return nombre;
     }
 
@@ -32,7 +33,7 @@ public class ClientDto {
         this.nombre = nombre;
     }
 
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
 
@@ -40,11 +41,11 @@ public class ClientDto {
         this.email = email;
     }
 
-    public String getNumeros() {
-        return numeros;
+    public static String getNumero() {
+        return numero;
     }
 
-    public void setNumeros(String numeros) {
-        this.numeros = numeros;
+    public void setNumero(String numeros) {
+        this.numero = numeros;
     }
 }
