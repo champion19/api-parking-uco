@@ -1,9 +1,9 @@
 package com.tutorial.crud.security.controller;
 
 import com.tutorial.crud.dto.Mensaje;
-import com.tutorial.crud.security.dto.JwtDto;
-import com.tutorial.crud.security.dto.LoginUsuario;
-import com.tutorial.crud.security.dto.NuevoUsuario;
+import com.tutorial.crud.security.dto.auth.JwtDto;
+import com.tutorial.crud.security.dto.auth.LoginUsuario;
+import com.tutorial.crud.security.dto.auth.NuevoUsuario;
 import com.tutorial.crud.security.entity.Rol;
 import com.tutorial.crud.security.entity.Usuario;
 import com.tutorial.crud.security.enums.RolNombre;

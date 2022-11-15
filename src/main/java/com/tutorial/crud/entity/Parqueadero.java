@@ -9,28 +9,38 @@ public class Parqueadero {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long numeroVehiculos;
+    private int id;
+    private int numero_vehiculos;
     private Date fecha_ingreso;
     private Date fecha_salida;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Vehiculo> vehiculos;
 
-    public Long getId() {
+    public Parqueadero(){
+
+    }
+
+    public Parqueadero(int numeroVehiculos, Date fechaIngreso, Date fechaSalida) {
+        this.numero_vehiculos = numeroVehiculos;
+        this.fecha_ingreso = fechaIngreso;
+        this.fecha_salida = fechaSalida;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getNumeroVehiculos() {
-        return numeroVehiculos;
+    public int getNumeroVehiculos() {
+        return numero_vehiculos;
     }
 
-    public void setNumeroVehiculos(Long numeroVehiculos) {
-        this.numeroVehiculos = numeroVehiculos;
+    public void setNumeroVehiculos(int numeroVehiculos) {
+        this.numero_vehiculos = numeroVehiculos;
     }
 
     public Date getFecha_ingreso() {

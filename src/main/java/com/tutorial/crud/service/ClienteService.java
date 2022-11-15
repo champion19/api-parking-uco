@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -14,23 +15,23 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     public List<Cliente> obtenerUsuarios(){
-        return (List<Cliente>) clienteRepository.findAll();
+        return clienteRepository.findAll();
     }
 
-    public Cliente guardarUsuario(Cliente usuario){
-        return clienteRepository.save(usuario);
+    public Cliente save(Cliente cliente){
+        return clienteRepository.save(cliente);
     }
 
-    public Cliente obtenerPorId(Long id){
-        return clienteRepository.findById(id).orElse(null);
+    public Optional<Cliente> getOne(int id){
+        return clienteRepository.findById(id);
     }
 
-    public boolean eliminarUsuario(Long id){
-        try{
-            clienteRepository.deleteById(id);
-            return true;
-        }catch(Exception err){
-            return false;
-        }
+
+    public void delete(int id){
+        clienteRepository.deleteById(id);
+    }
+
+    public boolean existsById(int id){
+        return clienteRepository.existsById(id);
     }
 }
