@@ -1,9 +1,8 @@
 package com.tutorial.crud.controller;
 
 import com.tutorial.crud.dto.Mensaje;
-import com.tutorial.crud.dto.client.ClientDto;
+import com.tutorial.crud.dto.client.ClienteDto;
 import com.tutorial.crud.entity.Cliente;
-import com.tutorial.crud.entity.Producto;
 import com.tutorial.crud.service.ClienteService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,32 +26,24 @@ public class ClienteController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
-    public ResponseEntity<?> guardarUsuario(@RequestBody ClientDto clientDto) {
-        if(StringUtils.isBlank(ClientDto.getNombre()) || StringUtils.isAllEmpty(ClientDto.getNombre()))
+    public ResponseEntity<?> guardarUsuario(@RequestBody ClienteDto clienteDto) {
+        if(StringUtils.isBlank(clienteDto.getNombre()) || StringUtils.isAllEmpty(clienteDto.getNombre()))
             return new ResponseEntity<>(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(ClientDto.getEmail()) || StringUtils.isAllEmpty(ClientDto.getEmail()))
+        if(StringUtils.isBlank(clienteDto.getEmail()) || StringUtils.isAllEmpty(clienteDto.getEmail()))
             return new ResponseEntity<>(new Mensaje("El correo electrónico es Obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(ClientDto.getNumero()) || StringUtils.isAllEmpty(ClientDto.getNumero()))
+        if(StringUtils.isBlank(clienteDto.getNumero()) || StringUtils.isAllEmpty(clienteDto.getNumero()))
             return new ResponseEntity<>(new Mensaje("El campo números es obligatorio"), HttpStatus.BAD_REQUEST);
-        Cliente cliente;
-        cliente = new Cliente(ClientDto.getNombre(), ClientDto.getEmail(), ClientDto.getNumero());
-        clientesService.guardarUsuario(cliente);
+        Cliente cliente = new Cliente(clienteDto.getNombre(), clienteDto.getEmail(), clienteDto.getNumero());
+        clientesService.save(cliente);
         return new ResponseEntity<>(new Mensaje("Cliente creado correctamente"), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{id}")
-    public Cliente obtenerUsuarioPorId(@PathVariable("id") Long id) {
-        return clientesService.obtenerPorId(id);
-    }
-
-
-    @DeleteMapping(path = "/{id}")
-    public String eliminarPorId(@PathVariable("id") Long id) {
-        boolean ok = this.clientesService.eliminarUsuario(id);
-        if (ok) {
-            return "Se eliminó el usuario con id " + id;
-        } else {
-            return "No pudo eliminar el usuario con id" + id;
-        }
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")int id){
+        if(!clientesService.existsById(id))
+            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        clientesService.delete(id);
+        return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 }

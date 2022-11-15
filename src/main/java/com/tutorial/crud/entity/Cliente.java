@@ -1,7 +1,6 @@
 package com.tutorial.crud.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.tutorial.crud.dto.client.ClientDto;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,18 +9,13 @@ import java.util.List;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String nombre;
     private String email;
     private String numero;
 
-    @JsonIgnoreProperties({"cliente"})
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "cliente")
-    private List<Vehiculo> vehiculos;
-
-    public Cliente(ClientDto clientDto) {
-
+    public Cliente() {
     }
 
     public Cliente(String nombre, String email, String numero) {
@@ -30,11 +24,15 @@ public class Cliente {
         this.numero = numero;
     }
 
-    public Long getId() {
+    @JsonIgnoreProperties({"cliente"})
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "cliente")
+    private List<Vehiculo> vehiculos;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
