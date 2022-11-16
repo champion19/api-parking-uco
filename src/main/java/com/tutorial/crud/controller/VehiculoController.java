@@ -21,12 +21,12 @@ public class VehiculoController {
 
     @GetMapping()
     public List<Vehiculo> obtenerVehiculo() {
-        return vehiculoService.list();
+        return vehiculoService.obtenerVehiculo();
     }
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id") int id) {
-        if (!VehiculoService.existsById(id))
+        if (!vehiculoService.existsById(id))
             return new ResponseEntity(new Mensaje("El vehiculo no existe"), HttpStatus.NOT_FOUND);
         Vehiculo vehiculo = vehiculoService.getOne(id).get();
         return new ResponseEntity(vehiculo, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class VehiculoController {
         if(StringUtils.isBlank(vehiculoDto.getPlaca()) || StringUtils.isAllEmpty(vehiculoDto.getPlaca()))
             return new ResponseEntity<>(new Mensaje("La placa del vehiculo es Obligatorio"), HttpStatus.BAD_REQUEST);
         Vehiculo vehiculo = new Vehiculo(vehiculoDto.getTipo(), vehiculoDto.getPlaca());
-        VehiculoService.save(vehiculo);
+        vehiculoService.save(vehiculo);
         return new ResponseEntity<>(new Mensaje("Se ha registrado correctamente la informacion del vehiculo"), HttpStatus.OK);
     }
 
@@ -51,7 +51,7 @@ public class VehiculoController {
     public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!vehiculoService.getOne(id).isPresent())
             return new ResponseEntity(new Mensaje("Este registro no existe"), HttpStatus.NOT_FOUND);
-        VehiculoService.delete(id);
+        vehiculoService.delete(id);
         return new ResponseEntity(new Mensaje("Registro del vehiculo eliminado correctamente"), HttpStatus.OK);
     }
 }
