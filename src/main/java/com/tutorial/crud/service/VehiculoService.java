@@ -1,18 +1,17 @@
 package com.tutorial.crud.service;
+
 import com.tutorial.crud.entity.Vehiculo;
 import com.tutorial.crud.repository.VehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 @Service
-@Transactional
 public class VehiculoService {
 
     @Autowired
-    static
-    VehiculoRepository vehiculoRepository;
+    private static VehiculoRepository vehiculoRepository;
 
     public List<Vehiculo> list(){
         return vehiculoRepository.findAll();
@@ -22,8 +21,10 @@ public class VehiculoService {
         return vehiculoRepository.findById(id);
     }
 
-    public static void  save(Vehiculo vehiculo){vehiculoRepository.save(vehiculo);
+    public static Vehiculo save(Vehiculo vehiculo){
+        return vehiculoRepository.save(vehiculo);
     }
+
 
     public static void delete(int id){
         vehiculoRepository.deleteById(id);
@@ -32,4 +33,5 @@ public class VehiculoService {
     public static boolean existsById(int id){
         return vehiculoRepository.existsById(id);
     }
+
 }

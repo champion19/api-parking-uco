@@ -15,12 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/vehicle")
-@CrossOrigin(origins = "*")
 public class VehiculoController {
     @Autowired
     private VehiculoService vehiculoService;
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Vehiculo> obtenerVehiculo() {
         return vehiculoService.list();
     }

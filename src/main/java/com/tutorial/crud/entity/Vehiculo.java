@@ -2,29 +2,28 @@ package com.tutorial.crud.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Vehiculo {
-    private final static long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String placa;
     private String tipo;
 
-    @JsonIgnoreProperties({"vehiculo"})
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cliente cliente;
-
     public Vehiculo(){
 
     }
 
     public Vehiculo(String tipo, String placa) {
+        this.tipo = tipo;
+        this.placa = placa;
     }
+
+    @JsonIgnoreProperties({"vehiculo"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cliente cliente;
 
     public long getId() {
         return id;
