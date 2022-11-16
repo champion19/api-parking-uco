@@ -22,10 +22,6 @@ public class VehiculoService {
         return vehiculoRepository.findById(id);
     }
 
-    public Optional<Vehiculo> getByNombre(String nombre){
-        return vehiculoRepository.findByNombre(nombre);
-    }
-
     public static void  save(Vehiculo vehiculo){vehiculoRepository.save(vehiculo);
     }
 
@@ -35,9 +31,5 @@ public class VehiculoService {
 
     public static boolean existsById(int id){
         return vehiculoRepository.existsById(id);
-    }
-
-    public boolean existsByNombre(String nombre) {
-        return vehiculoRepository.existsByNombre(nombre);
     }
 }
