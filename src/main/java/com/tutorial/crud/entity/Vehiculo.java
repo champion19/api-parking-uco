@@ -11,7 +11,6 @@ public class Vehiculo {
     private int id;
     private String placa;
     private String tipo;
-
     public Vehiculo(){
 
     }
