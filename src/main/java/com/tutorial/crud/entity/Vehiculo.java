@@ -18,6 +18,18 @@ public class Vehiculo {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
+
+
+    public Vehiculo(){
+
+    }
+
+    public Vehiculo(String tipo, String placa, Cliente cliente) {
+        this.tipo = tipo;
+        this.placa = placa;
+        this.cliente = cliente;
+    }
+
     public long getId() {
         return id;
     }
@@ -49,24 +61,4 @@ public class Vehiculo {
     public void setUsuario(Cliente cliente) {
         this.cliente = cliente;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
