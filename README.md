@@ -18,12 +18,17 @@ Versiónes estables para el proyecto:
 + Tener instalado un gestor de base de datos y configurarlo en
 ``application.properties`` del proyecto
 
++ Ejemplo configuración Base de datos en Dbeaver consumiendo un ambiente Dockerizado
+
+  ![img_2.png](img_2.png)
+
 + Elimina las etiquetas de comentario y ejecuta el archivo
 ``util/CreateRoles``
 
-
 + Iniciar aplicación en Intellij
+
 ![img.png](img.png)
+
 + Sigue los pasos descriptos en la imagen
 
 
