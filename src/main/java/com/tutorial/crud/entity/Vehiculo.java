@@ -20,7 +20,7 @@ public class Vehiculo {
         this.placa = placa;
     }
 
-    @JsonIgnoreProperties({"vehiculo"})
+    @JsonIgnoreProperties(value = {"vehiculos", "hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
@@ -48,11 +48,11 @@ public class Vehiculo {
         this.tipo = tipo;
     }
 
-    public Cliente getUsuario() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setUsuario(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 }
