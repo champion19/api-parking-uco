@@ -3,6 +3,7 @@ package com.tutorial.crud.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Cliente {
         this.numero = numero;
     }
 
-    @JsonIgnoreProperties({"cliente"})
+    @JsonIgnoreProperties(value = {"cliente"})
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "cliente")
     private List<Vehiculo> vehiculos;
 
